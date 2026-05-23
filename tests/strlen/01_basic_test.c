@@ -3,16 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   01_basic_test.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
+/*   By: sadell-e <sadell-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 12:45:13 by sadell-e          #+#    #+#             */
-/*   Updated: 2026/05/23 15:42:02 by miricci          ###   ########.fr       */
+/*   Updated: 2026/05/23 16:37:04 by sadell-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tests.h"
+#include "../tests.h"
 
-void	basic_test(void)
+int	basic_test(void)
 {
-	
+	if (strlen("Hi") == 2)
+		return (0);
+	return (-1);
 }

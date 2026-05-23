@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libunit.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
+/*   By: sadell-e <sadell-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 12:45:31 by sadell-e          #+#    #+#             */
-/*   Updated: 2026/05/23 15:46:10 by miricci          ###   ########.fr       */
+/*   Updated: 2026/05/23 18:45:00 by sadell-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <stdarg.h>
+# include <fcntl.h>
+# include <sys/mman.h>
+# include <sys/stat.h>
 
 typedef struct s_unit_test
 {

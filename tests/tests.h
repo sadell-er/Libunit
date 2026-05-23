@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tests.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
+/*   By: sadell-e <sadell-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 14:39:37 by sadell-e          #+#    #+#             */
-/*   Updated: 2026/05/23 15:46:08 by miricci          ###   ########.fr       */
+/*   Updated: 2026/05/23 18:54:41 by sadell-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,15 @@
 
 # include "../libunit.h"
 
-int strlen_launcher(void);
+int	strlen_launcher(void);
+int	basic_test(void);
+int	null_test(void);
+int	bigger_str_test(void);
 
+int	strcpy_launcher(void);
+int	basic_strcpy_test(void);
+int	wrong_result_test(void);
+int	null_src_test(void);
+int	strcpy_bus_error_test(void);
 
 #endif
