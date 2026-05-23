@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   00_launcher.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sadell-e <sadell-e@student.42.fr>          +#+  +:+       +#+        */
+/*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 17:11:47 by sadell-e          #+#    #+#             */
-/*   Updated: 2026/05/23 18:38:24 by sadell-e         ###   ########.fr       */
+/*   Updated: 2026/05/23 19:25:48 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	strcpy_launcher(void)
 	t_unit_test	*testlist;
 	char		*name;
 
-	name = "strcpy";
+	name = "STRCPY";
 	load_test(name, &testlist, "Basic strcpy test", &basic_strcpy_test);
 	load_test(name, &testlist, "Wrong result test", &wrong_result_test);
 	load_test(name, &testlist, "NULL src test", &null_src_test);
