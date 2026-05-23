@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   tests.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sadell-e <sadell-e@student.42.fr>          +#+  +:+       +#+        */
+/*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 14:39:37 by sadell-e          #+#    #+#             */
-/*   Updated: 2026/05/23 14:43:30 by sadell-e         ###   ########.fr       */
+/*   Updated: 2026/05/23 15:46:08 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TESTS_H
 # define TESTS_H
 
-# include "libunit.h"
+# include "../libunit.h"
 
 int strlen_launcher(void);
 

@@ -3,16 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   02_null_test.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sadell-e <sadell-e@student.42.fr>          +#+  +:+       +#+        */
+/*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 12:45:16 by sadell-e          #+#    #+#             */
-/*   Updated: 2026/05/23 14:55:18 by sadell-e         ###   ########.fr       */
+/*   Updated: 2026/05/23 15:46:47 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tests.h"
+#include "../tests.h"
 
 int	null_testtest(void)
 {
-	
+	char *str = 0;
+	int i = strlen(str);
+	return i;
+}
+
+int main()
+{
+	null_testtest();
 }

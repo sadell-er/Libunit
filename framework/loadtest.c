@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   01_basic_test.c                                    :+:      :+:    :+:   */
+/*   loadtest.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/23 12:45:13 by sadell-e          #+#    #+#             */
-/*   Updated: 2026/05/23 15:42:02 by miricci          ###   ########.fr       */
+/*   Created: 2026/05/23 15:25:54 by sadell-e          #+#    #+#             */
+/*   Updated: 2026/05/23 15:39:51 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tests.h"
+# include "libunit.h"
 
-void	basic_test(void)
+void	load_test(t_unit_test **testlist, char *name, int (*f)(void))
 {
 	
 }

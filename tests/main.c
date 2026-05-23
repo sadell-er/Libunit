@@ -3,19 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sadell-e <sadell-e@student.42.fr>          +#+  +:+       +#+        */
+/*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 12:45:22 by sadell-e          #+#    #+#             */
-/*   Updated: 2026/05/23 14:55:30 by sadell-e         ###   ########.fr       */
+/*   Updated: 2026/05/23 15:46:08 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tests.h"
-
-void	load_test(t_unit_test **testlist, char *str, (*f)(void *))
-{
-	
-}
 
 void	main(void)
 {
