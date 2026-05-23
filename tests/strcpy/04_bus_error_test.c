@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   04_bus_error_test.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sadell-e <sadell-e@student.42.fr>          +#+  +:+       +#+        */
+/*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 17:19:28 by sadell-e          #+#    #+#             */
-/*   Updated: 2026/05/23 18:58:18 by sadell-e         ###   ########.fr       */
+/*   Updated: 2026/05/23 20:33:42 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../tests.h"
-#include "../../libunit.h"
+#include "libunit.h"
 
 int	strcpy_bus_error_test(void)
 {

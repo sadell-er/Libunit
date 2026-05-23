@@ -7,14 +7,12 @@ INC_DIR = inc
 SRC_DIR = framework
 TEST_DIR = tests
 REAL_TEST_DIR = real_tests
+OBJ_DIR = obj
 
 AR = ar rcs
 
 SRC	= 	$(SRC_DIR)/launch_tests.c \
 		$(SRC_DIR)/loadtest.c
-
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
 
 BONUS_SRCS =
 
@@ -24,7 +22,7 @@ BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 all: $(NAME)
 
 test: $(NAME)
-	make test -C tests
+	make test -C $(TEST_DIR)
 
 bonus: .bonus
 
@@ -36,7 +34,7 @@ $(NAME): $(OBJS)
 	$(AR) $@ $^
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -I$(INC_DIR) -I$(INC_DIR)/libft -c $< -o $@
 
 clean:
 	rm -f $(OBJS) $(BONUS_OBJS)

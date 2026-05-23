@@ -3,7 +3,7 @@ NAME = libunit
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-INC_DIR = inc
+INC_DIR = ../inc
 
 STRCPY_FILES =	strcpy/00_launcher.c	\
 				strcpy/01_basic_test.c	\
@@ -32,10 +32,10 @@ test: $(NAME)
 	./$(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) $< -o $@ -lunit -Llibunit 
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@ -I$(INC_DIR) -I$(INC_DIR)/libft
 
 clean:
 	rm -f $(OBJS) $(BONUS_OBJS)

@@ -6,7 +6,7 @@
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 12:45:31 by sadell-e          #+#    #+#             */
-/*   Updated: 2026/05/23 19:23:56 by miricci          ###   ########.fr       */
+/*   Updated: 2026/05/23 20:17:34 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # include <stdbool.h>
 # include <wait.h>
 
-# include "inc/libft/libft.h"
+# include "libft.h"
 
 enum	e_type_of_exit
 {

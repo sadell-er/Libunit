@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   03_wrong_result_test.c                             :+:      :+:    :+:   */
+/*   02_wrong_result_test.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sadell-e <sadell-e@student.42.fr>          +#+  +:+       +#+        */
+/*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 17:19:25 by sadell-e          #+#    #+#             */
-/*   Updated: 2026/05/23 18:20:23 by sadell-e         ###   ########.fr       */
+/*   Updated: 2026/05/23 20:33:31 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../tests.h"
-#include "../../libunit.h"
+#include "libunit.h"
 
 int	wrong_result_test(void)
 {

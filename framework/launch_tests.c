@@ -6,11 +6,11 @@
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 16:42:42 by miricci           #+#    #+#             */
-/*   Updated: 2026/05/23 19:05:34 by miricci          ###   ########.fr       */
+/*   Updated: 2026/05/23 20:19:13 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libunit.h"
+#include "libunit.h"
 
 void	print_test(t_unit_test *data, int exit_code)
 {

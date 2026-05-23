@@ -6,7 +6,7 @@
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 12:45:16 by sadell-e          #+#    #+#             */
-/*   Updated: 2026/05/23 19:24:27 by miricci          ###   ########.fr       */
+/*   Updated: 2026/05/23 20:32:05 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 
 int	null_test(void)
 {
-	if (strlen(NULL) == 1)
+	char *s;
+
+	s = NULL;
+	if (strlen(s) == 1)
 		return (0);
 	return (-1);
 }

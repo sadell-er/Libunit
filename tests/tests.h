@@ -6,14 +6,14 @@
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 14:39:37 by sadell-e          #+#    #+#             */
-/*   Updated: 2026/05/23 19:24:19 by miricci          ###   ########.fr       */
+/*   Updated: 2026/05/23 20:29:07 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TESTS_H
 # define TESTS_H
 
-# include "../libunit.h"
+# include "libunit.h"
 
 int	strlen_launcher(void);
 int	basic_test(void);

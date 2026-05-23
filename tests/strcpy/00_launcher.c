@@ -6,16 +6,16 @@
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 17:11:47 by sadell-e          #+#    #+#             */
-/*   Updated: 2026/05/23 19:25:48 by miricci          ###   ########.fr       */
+/*   Updated: 2026/05/23 20:33:10 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../tests.h"
-#include "../../libunit.h"
+#include "libunit.h"
 
 int	strcpy_launcher(void)
 {
-	t_unit_test	*testlist;
+	t_list	*testlist;
 	char		*name;
 
 	name = "STRCPY";

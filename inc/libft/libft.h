@@ -6,7 +6,7 @@
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 18:55:16 by miricci           #+#    #+#             */
-/*   Updated: 2026/01/29 11:46:18 by miricci          ###   ########.fr       */
+/*   Updated: 2026/05/23 20:28:19 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@
 # include <stdio.h>
 # include <string.h>
 # include <fcntl.h>
+
 # include "ft_printf/ft_printf.h"
+# include "libsimplelist/libsimplelist.h"
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 8
