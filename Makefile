@@ -1,8 +1,14 @@
-NAME = libunit.h
+NAME = libunit.a
+
 CC = cc
+CFLAGS = -Wall -Wextra -Werror -I$(INC_DIR)
+
+INC_DIR = inc
+SRC_DIR = framework
+
 AR = ar rcs
-CFLAGS = -Wall -Wextra -Werror
-SRC =
+
+SRC = $(SRC_DIR)/launch_tests.c $(SRC_DIR)/loadtest.c
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
