@@ -1,14 +1,10 @@
 NAME = libunit.a
-
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I$(INC_DIR)
-
-INC_DIR = inc
-SRC_DIR = framework
-
 AR = ar rcs
+CFLAGS = -Wall -Wextra -Werror
+SRC = framework/launch_tests.c \
+framework/loadtest.c \
 
-SRC = $(SRC_DIR)/launch_tests.c $(SRC_DIR)/loadtest.c
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -20,7 +16,8 @@ BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 
 all: $(NAME)
 
-test:
+test: $(NAME) 
+	make test -C tests
 
 bonus: .bonus
 
