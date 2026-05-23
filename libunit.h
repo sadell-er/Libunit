@@ -6,7 +6,7 @@
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 12:45:31 by sadell-e          #+#    #+#             */
-/*   Updated: 2026/05/23 19:02:25 by miricci          ###   ########.fr       */
+/*   Updated: 2026/05/23 19:23:56 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <stdarg.h>
+# include <fcntl.h>
+# include <sys/mman.h>
+# include <sys/stat.h>
 # include <stdbool.h>
 # include <wait.h>
 

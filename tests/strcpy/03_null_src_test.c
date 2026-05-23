@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   01_basic_test.c                                    :+:      :+:    :+:   */
+/*   02_null_src_test.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
+/*   By: sadell-e <sadell-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/23 12:45:13 by sadell-e          #+#    #+#             */
-/*   Updated: 2026/05/23 19:24:23 by miricci          ###   ########.fr       */
+/*   Created: 2026/05/23 17:19:22 by sadell-e          #+#    #+#             */
+/*   Updated: 2026/05/23 18:11:05 by sadell-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../tests.h"
+#include "../../libunit.h"
 
-int	basic_test(void)
+int	null_src_test(void)
 {
-	if (strlen("Hi") == 2)
+	char	dst[64];
+
+	if (strcpy(dst, NULL) == NULL)
 		return (0);
 	return (-1);
 }
