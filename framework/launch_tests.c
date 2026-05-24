@@ -6,7 +6,7 @@
 /*   By: sadell-e <sadell-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 16:42:42 by miricci           #+#    #+#             */
-/*   Updated: 2026/05/24 19:13:28 by sadell-e         ###   ########.fr       */
+/*   Updated: 2026/05/24 19:55:36 by sadell-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,18 +87,26 @@ int	launch_tests(t_list **head)
 	t_unit_test	*data;
 	int			ret;
 	int			exit_code;
+	int			tot;
 
 	ret = 0;
+	tot = 0;
 	node = *head;
 	while (node)
 	{
 		data = node->content;
 		exit_code = launch(head, data);
 		if (exit_code)
+		{
 			ret = -1;
+			tot += 1;
+		}
 		print_test(data, exit_code);
 		node = node->next;
 	}
+	ft_putstr_fd("Tests: ", STDOUT_FILENO);
+	ft_putnbr_fd(tot, STDOUT_FILENO);
+	// print   size - cont  /   size
 	node = *head;
 	ft_lstclear(node);
 	return (ret);

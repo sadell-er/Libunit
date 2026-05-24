@@ -6,7 +6,7 @@
 /*   By: sadell-e <sadell-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 13:37:34 by miricci           #+#    #+#             */
-/*   Updated: 2026/05/24 19:08:31 by sadell-e         ###   ########.fr       */
+/*   Updated: 2026/05/24 19:27:24 by sadell-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_lstclear(t_list *lst)
 {
 	t_list	*tmp;
 
-	if (!lst || !del)
+	if (!lst)
 		return ;
 	while (lst)
 	{
