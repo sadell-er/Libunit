@@ -6,7 +6,7 @@
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 15:25:54 by sadell-e          #+#    #+#             */
-/*   Updated: 2026/05/24 10:55:27 by miricci          ###   ########.fr       */
+/*   Updated: 2026/05/24 14:09:22 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	load_test(char *func_name, t_list **testlist, char *test_name, int (*f)(voi
 	
 	if (!testlist)
 		testlist = mk_test_list();
-	if (!*testlist)
+	else if (!*testlist)
 	{
 		*testlist = ft_lstnew(mk_test_data(func_name, test_name, f));
 		return ;

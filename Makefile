@@ -28,11 +28,11 @@ test: $(NAME)
 memcheck: $(NAME)
 	@make memcheck -C $(TEST_DIR) --no-print-directory
 
-bonus: .bonus
+# bonus: .bonus
 
-.bonus: $(BONUS_OBJS) $(OBJS) 
-	@$(AR) $(NAME) $^ $^
-	@touch .bonus
+# .bonus: $(BONUS_OBJS) $(OBJS) 
+# 	@$(AR) $(NAME) $^ $^
+# 	@touch .bonus
 
 $(NAME): $(OBJS)
 	@$(AR) $@ $^

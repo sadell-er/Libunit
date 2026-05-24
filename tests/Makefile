@@ -1,7 +1,7 @@
 NAME = libunit
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -fPIE
+CFLAGS = -Wall -Wextra -Werror
 
 ROOT_DIR = ..
 INC_DIR = $(ROOT_DIR)/inc
@@ -36,7 +36,7 @@ test: $(NAME)
 	@./$(NAME)
 
 memcheck: $(NAME)
-	@valgrind ./$(NAME)
+	@valgrind --leak-check=full --track-origins=yes ./$(NAME)
 
 $(NAME): $(OBJS)
 	@$(CC) $(CFLAGS) $^ -o $@ $(DEPENDENCIES)
@@ -49,8 +49,9 @@ $(OBJ_DIR)/%.o: %.c
 	@$(CC) $(CFLAGS) -c $< -o $@ -I$(INC_DIR) -I$(INC_DIR)/libft
 
 clean:
+	@find . -name '*.o' -delete
 	@rm -rf $(OBJ_DIR)
-	@rm -f *.o
+	@rm -f $(OBJS)
 
 fclean: clean
 	@rm -f $(NAME)
