@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   02_null_src_test.c                                 :+:      :+:    :+:   */
+/*   03_null_src_test.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sadell-e <sadell-e@student.42.fr>          +#+  +:+       +#+        */
+/*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 17:19:22 by sadell-e          #+#    #+#             */
-/*   Updated: 2026/05/23 18:11:05 by sadell-e         ###   ########.fr       */
+/*   Updated: 2026/05/23 20:34:08 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../tests.h"
-#include "../../libunit.h"
+#include "libunit.h"
 
 int	null_src_test(void)
 {
 	char	dst[64];
-
-	if (strcpy(dst, NULL) == NULL)
+	char	*s;
+	
+	s = NULL;
+	if (strcpy(dst, s) == NULL)
 		return (0);
 	return (-1);
 }

@@ -6,7 +6,7 @@
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 12:45:31 by sadell-e          #+#    #+#             */
-/*   Updated: 2026/05/23 19:23:56 by miricci          ###   ########.fr       */
+/*   Updated: 2026/05/24 12:15:02 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # include <stdbool.h>
 # include <wait.h>
 
-# include "inc/libft/libft.h"
+# include "libft.h"
 
 enum	e_type_of_exit
 {
@@ -37,12 +37,12 @@ enum	e_type_of_exit
 
 typedef struct s_unit_test
 {
-	const char			*func_name;
+	char			*func_name;
 	char				*test_name;
 	int					(*fun)(void);
 }					t_unit_test;
 
-void	load_test(const char *func_name, t_list **testlist, char *name, int (*f)(void));
+void	load_test(char *func_name, t_list **testlist, char *name, int (*f)(void));
 int		launch_tests(t_list **head);
 
 #endif

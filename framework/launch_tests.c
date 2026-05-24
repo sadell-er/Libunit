@@ -6,23 +6,35 @@
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 16:42:42 by miricci           #+#    #+#             */
-/*   Updated: 2026/05/23 19:05:34 by miricci          ###   ########.fr       */
+/*   Updated: 2026/05/24 14:08:58 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libunit.h"
+#include "libunit.h"
 
-void	print_test(t_unit_test *data, int exit_code)
+static void	print_result(int exit_code)
 {
-	ft_putstr(data->func_name);
-	ft_putstr(": ");
-	ft_putstr(data->test_name);
-	ft_putstr(": ");
-	ft_putnbr(exit_code);
-	ft_putchar('\n');
+	if (exit_code == OK)
+		ft_putstr_fd("\x1b[32mOK\t:)\x1b[0m", STDOUT_FILENO);
+	else if (exit_code == KO)
+		ft_putstr_fd("\x1b[31mKO\t:(\x1b[0m", STDOUT_FILENO);
+	else if (exit_code == SEGV)
+		ft_putstr_fd("\x1b[33mSIGSEGV\t:(\x1b[0m", STDOUT_FILENO);
+	else if (exit_code == BUS)
+		ft_putstr_fd("\x1b[33mSIGBUS\t:(\x1b[0m", STDOUT_FILENO);	
 }
 
-int	launch(t_unit_test *data)
+static void	print_test(t_unit_test *data, int exit_code)
+{
+	ft_putstr_fd(data->func_name, STDOUT_FILENO);
+	ft_putstr_fd(":\t", STDOUT_FILENO);
+	ft_putstr_fd(data->test_name, STDOUT_FILENO);
+	ft_putstr_fd(":\t", STDOUT_FILENO);
+	print_result(exit_code);
+	ft_putchar_fd('\n', STDOUT_FILENO);
+}
+
+static int	launch(t_unit_test *data)
 {
 	pid_t	pid;
 	int		status;
@@ -37,7 +49,7 @@ int	launch(t_unit_test *data)
 	{
 		if (WEXITSTATUS(status) == 0)
 			return (OK);
-		else if (WEXITSTATUS(status) == -1)
+		else if (WEXITSTATUS(status) == 255)
 			return (KO);
 	}
 	if (WIFSIGNALED(status))
@@ -47,6 +59,7 @@ int	launch(t_unit_test *data)
 		else if (WTERMSIG(status) == 7)
 			return (BUS);
 	}
+	// if (WIFSIGNALED(status) == )
 	return (-1);
 }
 
@@ -68,5 +81,6 @@ int	launch_tests(t_list **head)
 		print_test(data, exit_code);
 		node = node->next;
 	}
+	// ft_lstiter
 	return (ret);
 }

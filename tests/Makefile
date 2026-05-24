@@ -1,43 +1,61 @@
-NAME    = tests
+NAME = libunit
 
-CC      = cc
-CFLAGS  = -Wall -Wextra -Werror
+CC = cc
+CFLAGS = -Wall -Wextra -Werror
 
-SRCS    = tests/strcpy/00_launcher.c \
-tests/strcpy/01_basic_test.c \
-tests/strcpy/03_null_src_test.c \
-tests/strcpy/02_wrong_result_test.c \
-tests/strcpy/04_bus_error_test.c \
-tests/strlen/00_launcher.c \
-tests/strlen/01_basic_test.c \
-tests/strlen/02_null_test.c \
-tests/strlen/03_bigger_str_test.c \
-tests/main.c
+ROOT_DIR = ..
+INC_DIR = $(ROOT_DIR)/inc
+OBJ_DIR = obj
 
-LIB = ../libunit.a
+STRCPY_FILES =	strcpy/00_launcher.c	\
+				strcpy/01_basic_test.c	\
+				strcpy/02_wrong_result_test.c	\
+				strcpy/03_null_src_test.c	\
+				strcpy/04_bus_error_test.c
 
-OBJS    = $(SRCS:.c=.o)
+STRLEN_FILES =	strlen/00_launcher.c	\
+				strlen/01_basic_test.c	\
+				strlen/02_null_test.c	\
+				strlen/03_bigger_str_test.c
+
+DEPENDENCIES =	-L$(ROOT_DIR) -lunit \
+				-L$(INC_DIR)/libft -lft \
+				-L$(INC_DIR)/libft/libsimplelist -lsimplelist
+
+AR = ar rcs
+
+SRC	= 	main.c			\
+ 		$(STRCPY_FILES)	\
+		$(STRLEN_FILES)
+
+OBJS = $(SRC:%.c=$(OBJ_DIR)/%.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(LIB)
-    $(CC) $(CFLAGS) $(OBJS) $(LIB) -o $(NAME) -I ../inc/libft -Llibft -lft
-
-%.o: %.c
-    $(CC) $(CFLAGS) -c $< -o $@
-
 test: $(NAME)
-    @ ./$(NAME)
+	@./$(NAME)
 
-$(LIB):
-    $(MAKE) -C .. all
+memcheck: $(NAME)
+	@valgrind --leak-check=full --track-origins=yes ./$(NAME)
+
+$(NAME): $(OBJS)
+	@$(CC) $(CFLAGS) $^ -o $@ $(DEPENDENCIES)
+
+$(OBJ_DIR):
+	@mkdir -p $@
+
+$(OBJ_DIR)/%.o: %.c
+	@mkdir -p $(dir $@)
+	@$(CC) $(CFLAGS) -c $< -o $@ -I$(INC_DIR) -I$(INC_DIR)/libft
 
 clean:
-    rm -f $(OBJS)
+	@find . -name '*.o' -delete
+	@rm -rf $(OBJ_DIR)
+	@rm -f $(OBJS)
 
 fclean: clean
-    rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re test
+.PHONY: all test clean fclean re
