@@ -1,4 +1,5 @@
 NAME = libunit.a
+BONUS = libunit_bonus.a
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
@@ -9,30 +10,35 @@ TEST_DIR = tests
 REAL_TEST_DIR = real_tests
 OBJ_DIR = obj
 LIBFT_DIR = $(INC_DIR)/libft
+BONUS_DIR = framework_bonus
+TEST_BONUS_DIR = bonus_tests
 
 AR = ar rcs
 
 SRC	= 	$(SRC_DIR)/launch_tests.c \
 		$(SRC_DIR)/loadtest.c
 
-BONUS_SRCS =
+BONUS_SRCS =	$(BONUS_DIR)/launch_tests.c \
+				$(BONUS_DIR)/loadtest.c
 
 OBJS = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
-BONUS_OBJS = $(BONUS_SRCS:.c=.o)
+BONUS_OBJS = $(BONUS_SRCS:$(BONUS_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 all: $(NAME)
 
 test: $(NAME)
-	@make test -C $(TEST_DIR) --no-print-directory
+	@$(MAKE) test -C $(TEST_DIR) --no-print-directory
 
 memcheck: $(NAME)
-	@make memcheck -C $(TEST_DIR) --no-print-directory
+	@$(MAKE) memcheck -C $(TEST_DIR) --no-print-directory
 
-# bonus: .bonus
+bonus: $(BONUS)
 
-# .bonus: $(BONUS_OBJS) $(OBJS) 
-# 	@$(AR) $(NAME) $^ $^
-# 	@touch .bonus
+$(BONUS): $(BONUS_OBJS)
+	@$(AR) $@ $^
+
+test-bonus:
+	@$(MAKE) test -C $(TEST_BONUS_DIR) --no-print-directory
 
 $(NAME): $(OBJS)
 	@$(AR) $@ $^
@@ -44,8 +50,12 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) -I$(INC_DIR) -I$(LIBFT_DIR) -c $< -o $@
 
+$(OBJ_DIR)/%.o: $(BONUS_DIR)/%.c
+	@mkdir -p $(dir $@)
+	@$(CC) $(CFLAGS) -I$(INC_DIR) -I$(LIBFT_DIR) -c $< -o $@
+
 $(LIBFT_LIB):
-	@make -C $(LIBFT_DIR) --no-print-directory
+	@$(MAKE) -C $(LIBFT_DIR) --no-print-directory
 
 clean:
 	@rm -rf $(OBJ_DIR)
@@ -55,10 +65,10 @@ clean-test: clean
 	@$(MAKE) clean -C $(TEST_DIR) --no-print-directory
 
 fclean: clean
-	@rm -f $(NAME) .bonus
+	@rm -f $(NAME) bonus_$(NAME)
 
 fclean-test: fclean
-	@make fclean -C $(TEST_DIR) --no-print-directory
+	@$(MAKE) fclean -C $(TEST_DIR) --no-print-directory
 
 re: fclean all
 

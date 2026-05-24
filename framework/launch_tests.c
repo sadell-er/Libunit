@@ -6,7 +6,7 @@
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 16:42:42 by miricci           #+#    #+#             */
-/*   Updated: 2026/05/24 14:08:58 by miricci          ###   ########.fr       */
+/*   Updated: 2026/05/24 16:14:05 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 static void	print_result(int exit_code)
 {
 	if (exit_code == OK)
-		ft_putstr_fd("\x1b[32mOK\t:)\x1b[0m", STDOUT_FILENO);
+		ft_putstr_fd("OK\t:)", STDOUT_FILENO);
 	else if (exit_code == KO)
-		ft_putstr_fd("\x1b[31mKO\t:(\x1b[0m", STDOUT_FILENO);
+		ft_putstr_fd("KO\t:(", STDOUT_FILENO);
 	else if (exit_code == SEGV)
-		ft_putstr_fd("\x1b[33mSIGSEGV\t:(\x1b[0m", STDOUT_FILENO);
+		ft_putstr_fd("SIGSEGV\t:(", STDOUT_FILENO);
 	else if (exit_code == BUS)
-		ft_putstr_fd("\x1b[33mSIGBUS\t:(\x1b[0m", STDOUT_FILENO);	
+		ft_putstr_fd("SIGBUS\t:(", STDOUT_FILENO);	
 }
 
 static void	print_test(t_unit_test *data, int exit_code)
@@ -34,16 +34,30 @@ static void	print_test(t_unit_test *data, int exit_code)
 	ft_putchar_fd('\n', STDOUT_FILENO);
 }
 
-static int	launch(t_unit_test *data)
+static int	launch(t_list **head, t_unit_test *data)
 {
 	pid_t	pid;
 	int		status;
+	int		(*f)(void);
+	t_list	*node;
+	t_list	*tmp;
 
 	pid = fork();
 	if (pid < 0)
 		return (-1);
 	if (pid == 0)
-		exit(data->fun());
+	{
+		f = data->fun;
+		node = *head;
+		while (node)
+		{
+			tmp = node->next;
+			free(node->content);
+			free(node);
+			node = tmp;
+		}
+		exit(f());
+	}
 	wait(&status);
 	if (WIFEXITED(status))
 	{
@@ -59,7 +73,6 @@ static int	launch(t_unit_test *data)
 		else if (WTERMSIG(status) == 7)
 			return (BUS);
 	}
-	// if (WIFSIGNALED(status) == )
 	return (-1);
 }
 
@@ -69,18 +82,26 @@ int	launch_tests(t_list **head)
 	t_unit_test *data;
 	int			ret;
 	int			exit_code;
+	t_list	*tmp;
 
 	ret = 0;
 	node = *head;
 	while (node)
 	{
 		data = node->content;
-		exit_code = launch(data);
+		exit_code = launch(head, data);
 		if (exit_code)
 			ret = -1;
 		print_test(data, exit_code);
 		node = node->next;
 	}
-	// ft_lstiter
+	node = *head;
+	while (node)
+	{
+		tmp = node->next;
+		free(node->content);
+		free(node);
+		node = tmp;
+	}
 	return (ret);
 }

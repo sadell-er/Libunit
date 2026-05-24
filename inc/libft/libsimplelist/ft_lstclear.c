@@ -6,7 +6,7 @@
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 13:37:34 by miricci           #+#    #+#             */
-/*   Updated: 2026/01/22 16:56:06 by miricci          ###   ########.fr       */
+/*   Updated: 2026/05/24 15:50:45 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,19 @@
 }
 */
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+void	ft_lstclear(t_list *lst, void (*del)(void *))
 {
 	t_list	*tmp;
 
-	if (!lst || !del || !*lst)
-		return ;
-	while (*lst)
+	// if (!lst || !del )
+	// 	return ;
+	while (lst)
 	{
-		tmp = (*lst)->next;
-		del((*lst)->content);
-		free(*lst);
-		*lst = tmp;
+		tmp = lst->next;
+		del(lst->content);
+		free(lst);
+		lst = tmp;
 	}
-	free(lst);
 }
 /*
 int main(void)

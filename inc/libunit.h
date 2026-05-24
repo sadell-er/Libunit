@@ -6,7 +6,7 @@
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 12:45:31 by sadell-e          #+#    #+#             */
-/*   Updated: 2026/05/24 12:15:02 by miricci          ###   ########.fr       */
+/*   Updated: 2026/05/24 16:35:55 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # include <sys/stat.h>
 # include <stdbool.h>
 # include <wait.h>
+# include <signal.h>
 
 # include "libft.h"
 
@@ -32,7 +33,11 @@ enum	e_type_of_exit
 	OK,
 	KO,
 	SEGV,
-	BUS
+	BUS,
+	ABRT,
+	FPE,
+	PIPE,
+	ILL
 };
 
 typedef struct s_unit_test

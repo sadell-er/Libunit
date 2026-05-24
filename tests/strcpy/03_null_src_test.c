@@ -6,11 +6,11 @@
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 17:19:22 by sadell-e          #+#    #+#             */
-/*   Updated: 2026/05/23 20:34:08 by miricci          ###   ########.fr       */
+/*   Updated: 2026/05/24 17:10:47 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../tests.h"
+#include "tests.h"
 #include "libunit.h"
 
 int	null_src_test(void)

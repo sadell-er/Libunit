@@ -6,11 +6,11 @@
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 12:45:13 by sadell-e          #+#    #+#             */
-/*   Updated: 2026/05/23 19:24:23 by miricci          ###   ########.fr       */
+/*   Updated: 2026/05/24 17:10:56 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../tests.h"
+#include "tests.h"
 
 int	basic_test(void)
 {

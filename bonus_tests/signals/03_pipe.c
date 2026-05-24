@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tests.h                                            :+:      :+:    :+:   */
+/*   03_pipe.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/23 14:39:37 by sadell-e          #+#    #+#             */
-/*   Updated: 2026/05/23 20:29:07 by miricci          ###   ########.fr       */
+/*   Created: 2026/05/24 16:36:24 by miricci           #+#    #+#             */
+/*   Updated: 2026/05/24 16:37:05 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TESTS_H
-# define TESTS_H
+#include "libunit.h"
 
-# include "libunit.h"
-
-int	strlen_launcher(void);
-int	basic_test(void);
-int	null_test(void);
-int	bigger_str_test(void);
-
-int	strcpy_launcher(void);
-int	basic_strcpy_test(void);
-int	wrong_result_test(void);
-int	null_src_test(void);
-int	strcpy_bus_error_test(void);
-
-#endif
+int	test_pipe(void)
+{
+	raise(SIGPIPE);
+	return (0);
+}
