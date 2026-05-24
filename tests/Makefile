@@ -1,9 +1,11 @@
 NAME = libunit
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -fPIE
 
-INC_DIR = ../inc
+ROOT_DIR = ..
+INC_DIR = $(ROOT_DIR)/inc
+OBJ_DIR = obj
 
 STRCPY_FILES =	strcpy/00_launcher.c	\
 				strcpy/01_basic_test.c	\
@@ -16,32 +18,42 @@ STRLEN_FILES =	strlen/00_launcher.c	\
 				strlen/02_null_test.c	\
 				strlen/03_bigger_str_test.c
 
+DEPENDENCIES =	-L$(ROOT_DIR) -lunit \
+				-L$(INC_DIR)/libft -lft \
+				-L$(INC_DIR)/libft/libsimplelist -lsimplelist
+
 AR = ar rcs
 
-SRC	= 	$(STRLEN_FILES) \
-		$(STRCPY_FILES)
+SRC	= 	main.c			\
+ 		$(STRCPY_FILES)	\
+		$(STRLEN_FILES)
 
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
-
-OBJS = $(SRC:.c=.o)
+OBJS = $(SRC:%.c=$(OBJ_DIR)/%.o)
 
 all: $(NAME)
 
 test: $(NAME)
-	./$(NAME)
+	@./$(NAME)
+
+memcheck: $(NAME)
+	@valgrind ./$(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $< -o $@ -lunit -Llibunit 
+	@$(CC) $(CFLAGS) $^ -o $@ $(DEPENDENCIES)
 
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@ -I$(INC_DIR) -I$(INC_DIR)/libft
+$(OBJ_DIR):
+	@mkdir -p $@
+
+$(OBJ_DIR)/%.o: %.c
+	@mkdir -p $(dir $@)
+	@$(CC) $(CFLAGS) -c $< -o $@ -I$(INC_DIR) -I$(INC_DIR)/libft
 
 clean:
-	rm -f $(OBJS) $(BONUS_OBJS)
+	@rm -rf $(OBJ_DIR)
+	@rm -f *.o
 
 fclean: clean
-	rm -f $(NAME) .bonus
+	@rm -f $(NAME)
 
 re: fclean all
 
