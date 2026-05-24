@@ -6,7 +6,7 @@
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 15:25:54 by sadell-e          #+#    #+#             */
-/*   Updated: 2026/05/24 15:55:20 by miricci          ###   ########.fr       */
+/*   Updated: 2026/05/24 18:08:08 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,8 @@ void	load_test(char *func_name, t_list **testlist, char *test_name, int (*f)(voi
 	else if (!*testlist)
 	{
 		*testlist = ft_lstnew(mk_test_data(func_name, test_name, f));
-		// print_list(testlist, "testlist");
 		return ;
 	}
-	// print_list(testlist, "testlist");
 	node = ft_lstlast(*testlist);
 	node->next = ft_lstnew(mk_test_data(func_name, test_name, f));
-	// print_list(testlist, "testlist");
 }

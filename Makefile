@@ -40,22 +40,7 @@ bonus: $(BONUS)
 $(BONUS): $(BONUS_OBJS)
 	@$(AR) $@ $^
 
-test-bonus:
-	@$(MAKE) test -C $(TEST_BONUS_DIR) --no-print-directory
-
-$(NAME): $(OBJS)
-	@$(AR) $@ $^
-
-$(OBJ_DIR):
-	@mkdir -p $@
-
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	@mkdir -p $(dir $@)
-	@$(CC) $(CFLAGS) -I$(INC_DIR) -I$(LIBFT_DIR) -c $< -o $@
-
-$(OBJ_DIR)/%.o: $(BONUS_DIR)/%.c
-
-test-bonus:
+test-bonus: $(BONUS)
 	@$(MAKE) test -C $(TEST_BONUS_DIR) --no-print-directory
 
 $(NAME): $(OBJS)
@@ -78,15 +63,12 @@ $(LIBFT_LIB):
 clean:
 	@rm -rf $(OBJ_DIR)
 	@rm -f *.o
-
-clean-test: clean
 	@$(MAKE) clean -C $(TEST_DIR) --no-print-directory
 
 fclean: clean
-	@rm -f $(NAME) bonus_$(NAME)
-
-fclean-test: fclean
+	@rm -f $(NAME) $(BONUS)
 	@$(MAKE) fclean -C $(TEST_DIR) --no-print-directory
+	@$(MAKE) fclean -C $(TEST_BONUS_DIR) --no-print-directory
 
 re: fclean all
 

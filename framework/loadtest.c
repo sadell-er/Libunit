@@ -6,13 +6,13 @@
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 15:25:54 by sadell-e          #+#    #+#             */
-/*   Updated: 2026/05/24 17:57:28 by miricci          ###   ########.fr       */
+/*   Updated: 2026/05/24 18:01:28 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../libunit.h"
 
-t_unit_test	*mk_test_data(const char *func_name, char *test_name, int (*f)(void))
+t_unit_test	*mk_test_data(char *func_name, char *test_name, int (*f)(void))
 {
 	t_unit_test	*data;
 	
@@ -34,7 +34,7 @@ t_list	**mk_test_list()
 	return (head);
 }
 
-void	load_test(const char *func_name, t_list **testlist, char *test_name, int (*f)(void))
+void	load_test(char *func_name, t_list **testlist, char *test_name, int (*f)(void))
 {
 	t_list *node;
 	
