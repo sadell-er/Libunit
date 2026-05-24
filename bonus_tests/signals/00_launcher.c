@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   00_launcher.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sadell-e <sadell-e@student.42.fr>          +#+  +:+       +#+        */
+/*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 16:37:33 by miricci           #+#    #+#             */
-/*   Updated: 2026/05/24 18:40:48 by sadell-e         ###   ########.fr       */
+/*   Updated: 2026/05/24 21:11:17 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ int	signals_launcher(void)
 	load_test(name, &testlist, "Test SIGFPE signal", &test_fpe);
 	load_test(name, &testlist, "Test SIGPIPE signal", &test_pipe);
 	load_test(name, &testlist, "Test SIGILL signal", &test_ill);
+	load_test(name, &testlist, "Test TIMEOUT signal", &test_timeout);
 	return (launch_tests(&testlist));
 }

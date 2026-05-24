@@ -6,7 +6,7 @@
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 12:45:31 by sadell-e          #+#    #+#             */
-/*   Updated: 2026/05/24 20:51:52 by miricci          ###   ########.fr       */
+/*   Updated: 2026/05/24 21:02:56 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,14 @@
 # include <fcntl.h>
 # include <sys/mman.h>
 # include <sys/stat.h>
+# include <sys/wait.h>
 # include <stdbool.h>
 # include <wait.h>
 # include <signal.h>
 
 # include "libft.h"
+
+# define TIMEOUT_SECONDS 5
 
 enum	e_type_of_exit
 {
@@ -37,7 +40,8 @@ enum	e_type_of_exit
 	ABRT,
 	FPE,
 	PIPE,
-	ILL
+	ILL,
+	TIMEOUT
 };
 
 typedef struct s_unit_test

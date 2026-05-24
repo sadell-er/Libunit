@@ -23,6 +23,7 @@ SIGNALS_FILES =	signals/00_launcher.c	\
 				signals/02_fpe.c	\
 				signals/03_pipe.c	\
 				signals/04_ill.c	\
+				signals/05_timeout.c
 
 DEPENDENCIES =	-L$(ROOT_DIR) -lunit_bonus \
 				-L$(INC_DIR)/libft -lft \

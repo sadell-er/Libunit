@@ -6,11 +6,16 @@
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 16:42:42 by miricci           #+#    #+#             */
-/*   Updated: 2026/05/24 20:46:47 by miricci          ###   ########.fr       */
+/*   Updated: 2026/05/24 21:09:42 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libunit.h"
+
+void timeout_handler(int sig) {
+	(void)sig;
+    exit(1);
+}
 
 static int	launch_impl(int status)
 {
@@ -20,6 +25,8 @@ static int	launch_impl(int status)
 			return (OK);
 		else if (WEXITSTATUS(status) == 255)
 			return (KO);
+		else if (WEXITSTATUS(status) == 1)
+			return (TIMEOUT);
 	}
 	if (WIFSIGNALED(status))
 	{
@@ -45,7 +52,7 @@ static int	launch(t_list **head, t_unit_test *data)
 	int		status;
 	int		(*f)(void);
 	t_list	*node;
-	t_list	*tmp;
+	int		exit_code;
 
 	pid = fork();
 	if (pid < 0)
@@ -54,14 +61,12 @@ static int	launch(t_list **head, t_unit_test *data)
 	{
 		f = data->fun;
 		node = *head;
-		while (node)
-		{
-			tmp = node->next;
-			free(node->content);
-			free(node);
-			node = tmp;
-		}
-		exit(f());
+		ft_lstclear(node);
+		signal(SIGALRM, timeout_handler);
+		alarm(TIMEOUT_SECONDS);
+		exit_code = f();
+		alarm(0);
+		exit(exit_code);
 	}
 	wait(&status);
 	return (launch_impl(status));

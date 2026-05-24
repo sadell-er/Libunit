@@ -6,7 +6,7 @@
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 20:03:50 by sadell-e          #+#    #+#             */
-/*   Updated: 2026/05/24 20:48:52 by miricci          ###   ########.fr       */
+/*   Updated: 2026/05/24 21:07:26 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	print_result(int exit_code)
 		ft_putstr_fd("\x1b[33mSIGPIPE\t:(\x1b[0m", STDOUT_FILENO);
 	else if (exit_code == ILL)
 		ft_putstr_fd("\x1b[33mSIGILL\t:(\x1b[0m", STDOUT_FILENO);
+	else if (exit_code == TIMEOUT)
+		ft_putstr_fd("\033[38;5;214mTIMEOUT\t:(\x1b[0m", STDOUT_FILENO);
 	else
 	{
 		ft_putstr_fd("UNKNOWN (", STDOUT_FILENO);
