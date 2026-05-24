@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   print_list.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
+/*   By: sadell-e <sadell-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 15:28:50 by miricci           #+#    #+#             */
-/*   Updated: 2026/05/24 15:47:11 by miricci          ###   ########.fr       */
+/*   Updated: 2026/05/24 18:36:49 by sadell-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libsimplelist.h"
-
 
 void	print_list(t_list **head, char *list_name)
 {

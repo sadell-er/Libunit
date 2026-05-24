@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   02_null_test.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
+/*   By: sadell-e <sadell-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 12:45:16 by sadell-e          #+#    #+#             */
-/*   Updated: 2026/05/24 17:10:58 by miricci          ###   ########.fr       */
+/*   Updated: 2026/05/24 18:30:21 by sadell-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	null_test(void)
 {
-	char *s;
+	char	*s;
 
 	s = NULL;
 	if (strlen(s) == 1)

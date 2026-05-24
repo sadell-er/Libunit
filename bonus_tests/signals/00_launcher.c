@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   00_launcher.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
+/*   By: sadell-e <sadell-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 16:37:33 by miricci           #+#    #+#             */
-/*   Updated: 2026/05/24 17:42:25 by miricci          ###   ########.fr       */
+/*   Updated: 2026/05/24 18:40:48 by sadell-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 int	signals_launcher(void)
 {
 	t_list	*testlist;
-	char		*name;
+	char	*name;
 
 	testlist = NULL;
 	name = "signals";

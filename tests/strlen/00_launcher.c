@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   00_launcher.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
+/*   By: sadell-e <sadell-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 12:45:00 by sadell-e          #+#    #+#             */
-/*   Updated: 2026/05/24 17:11:07 by miricci          ###   ########.fr       */
+/*   Updated: 2026/05/24 18:30:15 by sadell-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 int	strlen_launcher(void)
 {
 	t_list	*testlist;
-	char		*name;
+	char	*name;
 
 	testlist = NULL;
 	name = "STRLEN";

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
+/*   By: sadell-e <sadell-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 13:37:34 by miricci           #+#    #+#             */
-/*   Updated: 2026/05/24 15:50:45 by miricci          ###   ########.fr       */
+/*   Updated: 2026/05/24 19:08:31 by sadell-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,16 @@
 }
 */
 
-void	ft_lstclear(t_list *lst, void (*del)(void *))
+void	ft_lstclear(t_list *lst)
 {
 	t_list	*tmp;
 
-	// if (!lst || !del )
-	// 	return ;
+	if (!lst || !del)
+		return ;
 	while (lst)
 	{
 		tmp = lst->next;
-		del(lst->content);
+		free(lst->content);
 		free(lst);
 		lst = tmp;
 	}

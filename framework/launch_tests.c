@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   launch_tests.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
+/*   By: sadell-e <sadell-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 16:42:42 by miricci           #+#    #+#             */
-/*   Updated: 2026/05/24 18:12:27 by miricci          ###   ########.fr       */
+/*   Updated: 2026/05/24 19:13:28 by sadell-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	print_result(int exit_code)
 	else if (exit_code == SEGV)
 		ft_putstr_fd("SIGSEGV\t:(", STDOUT_FILENO);
 	else if (exit_code == BUS)
-		ft_putstr_fd("SIGBUS\t:(", STDOUT_FILENO);	
+		ft_putstr_fd("SIGBUS\t:(", STDOUT_FILENO);
 }
 
 static void	print_test(t_unit_test *data, int exit_code)
@@ -32,6 +32,25 @@ static void	print_test(t_unit_test *data, int exit_code)
 	ft_putstr_fd(":\t", STDOUT_FILENO);
 	print_result(exit_code);
 	ft_putchar_fd('\n', STDOUT_FILENO);
+}
+
+int	launch_impl(int status)
+{
+	if (WIFEXITED(status))
+	{
+		if (WEXITSTATUS(status) == 0)
+			return (OK);
+		else if (WEXITSTATUS(status) == 255)
+			return (KO);
+	}
+	if (WIFSIGNALED(status))
+	{
+		if (WTERMSIG(status) == 11)
+			return (SEGV);
+		else if (WTERMSIG(status) == 7)
+			return (BUS);
+	}
+	return (-1);
 }
 
 static int	launch(t_list **head, t_unit_test *data)
@@ -59,30 +78,15 @@ static int	launch(t_list **head, t_unit_test *data)
 		exit(f());
 	}
 	wait(&status);
-	if (WIFEXITED(status))
-	{
-		if (WEXITSTATUS(status) == 0)
-			return (OK);
-		else if (WEXITSTATUS(status) == 255)
-			return (KO);
-	}
-	if (WIFSIGNALED(status))
-	{
-		if (WTERMSIG(status) == 11)
-			return (SEGV);
-		else if (WTERMSIG(status) == 7)
-			return (BUS);
-	}
-	return (-1);
+	return (launch_impl(status));
 }
 
 int	launch_tests(t_list **head)
 {
 	t_list		*node;
-	t_unit_test *data;
+	t_unit_test	*data;
 	int			ret;
 	int			exit_code;
-	t_list	*tmp;
 
 	ret = 0;
 	node = *head;
@@ -96,12 +100,6 @@ int	launch_tests(t_list **head)
 		node = node->next;
 	}
 	node = *head;
-	while (node)
-	{
-		tmp = node->next;
-		free(node->content);
-		free(node);
-		node = tmp;
-	}
+	ft_lstclear(node);
 	return (ret);
 }

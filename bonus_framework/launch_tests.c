@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   launch_tests.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
+/*   By: sadell-e <sadell-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 16:42:42 by miricci           #+#    #+#             */
-/*   Updated: 2026/05/24 18:09:30 by miricci          ###   ########.fr       */
+/*   Updated: 2026/05/24 19:08:59 by sadell-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,11 @@ static void	print_result(int exit_code)
 		ft_putstr_fd("\x1b[33mSIGPIPE\t:(\x1b[0m", STDOUT_FILENO);
 	else if (exit_code == ILL)
 		ft_putstr_fd("\x1b[33mSIGILL\t:(\x1b[0m", STDOUT_FILENO);
-	else {
-	    ft_putstr_fd("UNKNOWN (", STDOUT_FILENO);
-	    ft_putnbr_fd(exit_code, STDOUT_FILENO);
-	    ft_putstr_fd(")", STDOUT_FILENO);
+	else
+	{
+		ft_putstr_fd("UNKNOWN (", STDOUT_FILENO);
+		ft_putnbr_fd(exit_code, STDOUT_FILENO);
+		ft_putstr_fd(")", STDOUT_FILENO);
 	}
 }
 
@@ -45,6 +46,33 @@ static void	print_test(t_unit_test *data, int exit_code)
 	ft_putstr_fd(":\t", STDOUT_FILENO);
 	print_result(exit_code);
 	ft_putchar_fd('\n', STDOUT_FILENO);
+}
+
+static int	launch_impl(int status)
+{
+	if (WIFEXITED(status))
+	{
+		if (WEXITSTATUS(status) == 0)
+			return (OK);
+		else if (WEXITSTATUS(status) == 255)
+			return (KO);
+	}
+	if (WIFSIGNALED(status))
+	{
+		if (WTERMSIG(status) == 11)
+			return (SEGV);
+		else if (WTERMSIG(status) == 7)
+			return (BUS);
+		else if (WTERMSIG(status) == 6)
+			return (ABRT);
+		else if (WTERMSIG(status) == 8)
+			return (FPE);
+		else if (WTERMSIG(status) == 13)
+			return (PIPE);
+		else if (WTERMSIG(status) == 4)
+			return (ILL);
+	}
+	return (printf("DHN"), -1);
 }
 
 static int	launch(t_list **head, t_unit_test *data)
@@ -72,38 +100,15 @@ static int	launch(t_list **head, t_unit_test *data)
 		exit(f());
 	}
 	wait(&status);
-	if (WIFEXITED(status))
-	{
-		if (WEXITSTATUS(status) == 0)
-			return (OK);
-		else if (WEXITSTATUS(status) == 255)
-			return (KO);
-	}
-	if (WIFSIGNALED(status))
-	{
-		if (WTERMSIG(status) == 11)
-			return (SEGV);
-		else if (WTERMSIG(status) == 7)
-			return (BUS);
-		else if (WTERMSIG(status) == 6)
-			return (ABRT);
-		else if (WTERMSIG(status) == 8)
-			return (FPE);
-		else if (WTERMSIG(status) == 13)
-			return (PIPE);
-		else if (WTERMSIG(status) == 4)
-			return (ILL);
-	}
-	return (printf("DHN"), -1);
+	return (launch_impl(status));
 }
 
 int	launch_tests(t_list **head)
 {
 	t_list		*node;
-	t_unit_test *data;
+	t_unit_test	*data;
 	int			ret;
 	int			exit_code;
-	t_list	*tmp;
 
 	ret = 0;
 	node = *head;
@@ -117,12 +122,6 @@ int	launch_tests(t_list **head)
 		node = node->next;
 	}
 	node = *head;
-	while (node)
-	{
-		tmp = node->next;
-		free(node->content);
-		free(node);
-		node = tmp;
-	}
+	ft_lstclear(node);
 	return (ret);
 }

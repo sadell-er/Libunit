@@ -10,7 +10,7 @@ TEST_DIR = tests
 REAL_TEST_DIR = real_tests
 OBJ_DIR = obj
 LIBFT_DIR = $(INC_DIR)/libft
-BONUS_DIR = framework_bonus
+BONUS_DIR = bonus_framework
 TEST_BONUS_DIR = bonus_tests
 
 AR = ar rcs

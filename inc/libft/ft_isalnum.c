@@ -6,10 +6,9 @@
 /*   By: sadell-e <sadell-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:52:07 by miricci           #+#    #+#             */
-/*   Updated: 2026/05/24 15:04:36 by sadell-e         ###   ########.fr       */
+/*   Updated: 2026/05/24 18:35:52 by sadell-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 int	ft_isalnum(int c)
 {
@@ -18,4 +17,3 @@ int	ft_isalnum(int c)
 	else
 		return (0);
 }
-

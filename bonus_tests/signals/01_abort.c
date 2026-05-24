@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   01_abort.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
+/*   By: sadell-e <sadell-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 16:33:31 by miricci           #+#    #+#             */
-/*   Updated: 2026/05/24 17:39:38 by miricci          ###   ########.fr       */
+/*   Updated: 2026/05/24 18:41:06 by sadell-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "libunit.h"
+#include "libunit.h"
 
-int	test_abort()
+int	test_abort(void)
 {
 	abort();
 	return (0);
