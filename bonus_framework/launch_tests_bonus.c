@@ -1,52 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   launch_tests.c                                     :+:      :+:    :+:   */
+/*   launch_tests_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sadell-e <sadell-e@student.42.fr>          +#+  +:+       +#+        */
+/*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 16:42:42 by miricci           #+#    #+#             */
-/*   Updated: 2026/05/24 19:21:14 by sadell-e         ###   ########.fr       */
+/*   Updated: 2026/05/24 20:46:47 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libunit.h"
-
-static void	print_result(int exit_code)
-{
-	if (exit_code == OK)
-		ft_putstr_fd("\x1b[32mOK\t:)\x1b[0m", STDOUT_FILENO);
-	else if (exit_code == KO)
-		ft_putstr_fd("\x1b[31mKO\t:(\x1b[0m", STDOUT_FILENO);
-	else if (exit_code == SEGV)
-		ft_putstr_fd("\x1b[33mSIGSEGV\t:(\x1b[0m", STDOUT_FILENO);
-	else if (exit_code == BUS)
-		ft_putstr_fd("\x1b[33mSIGBUS\t:(\x1b[0m", STDOUT_FILENO);
-	else if (exit_code == ABRT)
-		ft_putstr_fd("\x1b[33mSIGABRT\t:(\x1b[0m", STDOUT_FILENO);
-	else if (exit_code == FPE)
-		ft_putstr_fd("\x1b[33mSIGFPE\t:(\x1b[0m", STDOUT_FILENO);
-	else if (exit_code == PIPE)
-		ft_putstr_fd("\x1b[33mSIGPIPE\t:(\x1b[0m", STDOUT_FILENO);
-	else if (exit_code == ILL)
-		ft_putstr_fd("\x1b[33mSIGILL\t:(\x1b[0m", STDOUT_FILENO);
-	else
-	{
-		ft_putstr_fd("UNKNOWN (", STDOUT_FILENO);
-		ft_putnbr_fd(exit_code, STDOUT_FILENO);
-		ft_putstr_fd(")", STDOUT_FILENO);
-	}
-}
-
-static void	print_test(t_unit_test *data, int exit_code)
-{
-	ft_putstr_fd(data->func_name, STDOUT_FILENO);
-	ft_putstr_fd(":\t", STDOUT_FILENO);
-	ft_putstr_fd(data->test_name, STDOUT_FILENO);
-	ft_putstr_fd(":\t", STDOUT_FILENO);
-	print_result(exit_code);
-	ft_putchar_fd('\n', STDOUT_FILENO);
-}
 
 static int	launch_impl(int status)
 {
@@ -109,19 +73,24 @@ int	launch_tests(t_list **head)
 	t_unit_test	*data;
 	int			ret;
 	int			exit_code;
+	int			tot;
 
 	ret = 0;
+	tot = 0;
 	node = *head;
 	while (node)
 	{
 		data = node->content;
 		exit_code = launch(head, data);
 		if (exit_code)
+		{
 			ret = -1;
+			tot += 1;
+		}
 		print_test(data, exit_code);
 		node = node->next;
 	}
+	tot_print(tot, ft_lstsize(*head));
 	node = *head;
-	ft_lstclear(node);
-	return (ret);
+	return (ft_lstclear(node), ret);
 }

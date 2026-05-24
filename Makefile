@@ -8,6 +8,7 @@ INC_DIR = inc
 SRC_DIR = framework
 TEST_DIR = tests
 REAL_TEST_DIR = real_tests
+REAL_TEST_BONUS_DIR = bonus_real_tests
 OBJ_DIR = obj
 LIBFT_DIR = $(INC_DIR)/libft
 BONUS_DIR = bonus_framework
@@ -15,17 +16,14 @@ TEST_BONUS_DIR = bonus_tests
 
 AR = ar rcs
 CFLAGS = -Wall -Wextra -Werror
-SRC = framework/launch_tests.c \
-framework/loadtest.c \
-framework/test_print.c \
 
 SRC	= 	$(SRC_DIR)/launch_tests.c \
 		$(SRC_DIR)/loadtest.c \
 		$(SRC_DIR)/test_print.c
 
-BONUS_SRCS =	$(BONUS_DIR)/launch_tests.c \
-				$(BONUS_DIR)/loadtest.c \
-				$(BONUS_DIR)/test_print.c
+BONUS_SRCS =	$(BONUS_DIR)/launch_tests_bonus.c \
+				$(BONUS_DIR)/loadtest_bonus.c \
+				$(BONUS_DIR)/test_print_bonus.c
 
 OBJS = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 BONUS_OBJS = $(BONUS_SRCS:$(BONUS_DIR)/%.c=$(OBJ_DIR)/%.o)
@@ -34,6 +32,7 @@ all: $(NAME)
 
 test: $(NAME)
 	@$(MAKE) test -C $(TEST_DIR) --no-print-directory
+	@$(MAKE) test -C $(REAL_TEST_DIR) --no-print-directory
 
 memcheck: $(NAME)
 	@$(MAKE) memcheck -C $(TEST_DIR) --no-print-directory
@@ -45,6 +44,7 @@ $(BONUS): $(BONUS_OBJS)
 
 test-bonus: $(BONUS)
 	@$(MAKE) test -C $(TEST_BONUS_DIR) --no-print-directory
+	@$(MAKE) test -C $(REAL_TEST_BONUS_DIR) --no-print-directory
 
 $(NAME): $(OBJS)
 	@$(AR) $@ $^

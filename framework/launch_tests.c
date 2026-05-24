@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   launch_tests.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sadell-e <sadell-e@student.42.fr>          +#+  +:+       +#+        */
+/*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 16:42:42 by miricci           #+#    #+#             */
-/*   Updated: 2026/05/24 20:16:13 by sadell-e         ###   ########.fr       */
+/*   Updated: 2026/05/24 20:46:03 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,5 @@ int	launch_tests(t_list **head)
 	}
 	tot_print(tot, ft_lstsize(*head));
 	node = *head;
-	ft_lstclear(node);
-	return (ret);
+	return (ft_lstclear(node), ret);
 }

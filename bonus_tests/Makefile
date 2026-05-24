@@ -7,6 +7,17 @@ ROOT_DIR = ..
 INC_DIR = $(ROOT_DIR)/inc
 OBJ_DIR = obj
 
+STRCPY_FILES =	strcpy/00_launcher.c	\
+				strcpy/01_basic_test.c	\
+				strcpy/02_wrong_result_test.c	\
+				strcpy/03_null_src_test.c	\
+				strcpy/04_bus_error_test.c
+
+STRLEN_FILES =	strlen/00_launcher.c	\
+				strlen/01_basic_test.c	\
+				strlen/02_null_test.c	\
+				strlen/03_bigger_str_test.c
+
 SIGNALS_FILES =	signals/00_launcher.c	\
 				signals/01_abort.c	\
 				signals/02_fpe.c	\
@@ -20,7 +31,9 @@ DEPENDENCIES =	-L$(ROOT_DIR) -lunit_bonus \
 
 AR = ar rcs
 
-SRC	= 	main.c			\
+SRC	= 	main_bonus.c			\
+		$(STRCPY_FILES)			\
+		$(STRLEN_FILES)			\
  		$(SIGNALS_FILES)
 
 OBJS = $(SRC:%.c=$(OBJ_DIR)/%.o)

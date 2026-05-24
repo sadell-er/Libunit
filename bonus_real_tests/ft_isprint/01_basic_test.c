@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   01_basic_test.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sadell-e <sadell-e@student.42.fr>          +#+  +:+       +#+        */
+/*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/24 17:20:43 by miricci           #+#    #+#             */
-/*   Updated: 2026/05/24 18:40:41 by sadell-e         ###   ########.fr       */
+/*   Created: 2026/05/23 17:12:05 by sadell-e          #+#    #+#             */
+/*   Updated: 2026/05/24 20:41:59 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tests.h"
+#include "../real_tests_bonus.h"
 
-int	main(void)
+int	basic_isprint_test(void)
 {
-	int	result;
-
-	result = 0;
-	result += signals_launcher();
-	if (result != 0)
-		return (-1);
-	return (0);
+	if (ft_isprint(33) == 1)
+		return (0);
+	return (-1);
 }

@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tests.h                                            :+:      :+:    :+:   */
+/*   tests_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 14:39:37 by sadell-e          #+#    #+#             */
-/*   Updated: 2026/05/24 19:20:47 by miricci          ###   ########.fr       */
+/*   Updated: 2026/05/24 20:52:11 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TESTS_H
-# define TESTS_H
+#ifndef TESTS_BONUS_H
+# define TESTS_BONUS_H
 
 # include "libunit.h"
 
