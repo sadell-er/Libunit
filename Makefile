@@ -17,12 +17,15 @@ AR = ar rcs
 CFLAGS = -Wall -Wextra -Werror
 SRC = framework/launch_tests.c \
 framework/loadtest.c \
+framework/test_print.c \
 
 SRC	= 	$(SRC_DIR)/launch_tests.c \
-		$(SRC_DIR)/loadtest.c
+		$(SRC_DIR)/loadtest.c \
+		$(SRC_DIR)/test_print.c
 
 BONUS_SRCS =	$(BONUS_DIR)/launch_tests.c \
-				$(BONUS_DIR)/loadtest.c
+				$(BONUS_DIR)/loadtest.c \
+				$(BONUS_DIR)/test_print.c
 
 OBJS = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 BONUS_OBJS = $(BONUS_SRCS:$(BONUS_DIR)/%.c=$(OBJ_DIR)/%.o)

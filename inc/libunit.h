@@ -6,7 +6,7 @@
 /*   By: sadell-e <sadell-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 12:45:31 by sadell-e          #+#    #+#             */
-/*   Updated: 2026/05/24 18:37:47 by sadell-e         ###   ########.fr       */
+/*   Updated: 2026/05/24 20:14:42 by sadell-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,10 @@ typedef struct s_unit_test
 	int		(*fun)(void);
 }			t_unit_test;
 
-void	load_test(char *func_name, t_list **testlist,
-			char *name, int (*f)(void));
-int		launch_tests(t_list **head);
+void		load_test(char *func_name, t_list **testlist,
+				char *name, int (*f)(void));
+int			launch_tests(t_list **head);
+void	print_test(t_unit_test *data, int exit_code);
+void	tot_print(int tot, int len);
 
 #endif
