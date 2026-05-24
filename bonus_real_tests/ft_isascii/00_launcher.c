@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   00_launcher.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
+/*   By: sadell-e <sadell-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 17:11:47 by sadell-e          #+#    #+#             */
-/*   Updated: 2026/05/24 20:41:59 by miricci          ###   ########.fr       */
+/*   Updated: 2026/05/24 21:07:42 by sadell-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	isascii_launcher(void)
 	testlist = NULL;
 	name = "ISASCII";
 	load_test(name, &testlist, "Basic isascii test", &basic_isascii_test);
-	load_test(name, &testlist, "Wrong result test", &isascii_wrong_test);
-	load_test(name, &testlist, "Limit test", &isascii_limit_test);
+	load_test(name, &testlist, "Wrong result      ", &isascii_wrong_test);
+	load_test(name, &testlist, "Limit test        ", &isascii_limit_test);
 	return (launch_tests(&testlist));
 }

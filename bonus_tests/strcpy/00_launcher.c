@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   00_launcher.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
+/*   By: sadell-e <sadell-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 17:11:47 by sadell-e          #+#    #+#             */
-/*   Updated: 2026/05/24 19:20:52 by miricci          ###   ########.fr       */
+/*   Updated: 2026/05/24 21:10:33 by sadell-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ int	strcpy_launcher(void)
 
 	testlist = NULL;
 	name = "STRCPY";
-	load_test(name, &testlist, "Basic strcpy test", &basic_strcpy_test);
-	load_test(name, &testlist, "Wrong result test", &wrong_result_test);
-	load_test(name, &testlist, "NULL src test", &null_src_test);
-	load_test(name, &testlist, "Bus error test", &strcpy_bus_error_test);
+	load_test(name, &testlist, "Basic strcpy test         ", &basic_strcpy_test);
+	load_test(name, &testlist, "Wrong result              ", &wrong_result_test);
+	load_test(name, &testlist, "NULL src test             ", &null_src_test);
+	load_test(name, &testlist, "Bus error test            ", &strcpy_bus_error_test);
 	return (launch_tests(&testlist));
 }
