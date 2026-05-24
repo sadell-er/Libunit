@@ -6,13 +6,13 @@
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 15:25:54 by sadell-e          #+#    #+#             */
-/*   Updated: 2026/05/24 14:09:22 by miricci          ###   ########.fr       */
+/*   Updated: 2026/05/23 19:09:05 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "libunit.h"
+# include "../libunit.h"
 
-t_unit_test	*mk_test_data(char *func_name, char *test_name, int (*f)(void))
+t_unit_test	*mk_test_data(const char *func_name, char *test_name, int (*f)(void))
 {
 	t_unit_test	*data;
 	
@@ -30,17 +30,17 @@ t_list	**mk_test_list()
 	t_list	**head;
 	
 	head = (t_list **)malloc(sizeof(t_list *));
-	*head = NULL;
+	(*head)->next = NULL;
 	return (head);
 }
 
-void	load_test(char *func_name, t_list **testlist, char *test_name, int (*f)(void))
+void	load_test(const char *func_name, t_list **testlist, char *test_name, int (*f)(void))
 {
 	t_list *node;
 	
 	if (!testlist)
 		testlist = mk_test_list();
-	else if (!*testlist)
+	if (!*testlist)
 	{
 		*testlist = ft_lstnew(mk_test_data(func_name, test_name, f));
 		return ;

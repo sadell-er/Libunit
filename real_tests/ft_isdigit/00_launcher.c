@@ -6,22 +6,21 @@
 /*   By: sadell-e <sadell-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 17:11:47 by sadell-e          #+#    #+#             */
-/*   Updated: 2026/05/23 18:38:24 by sadell-e         ###   ########.fr       */
+/*   Updated: 2026/05/24 16:35:55 by sadell-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../tests.h"
-#include "../../libunit.h"
+#include "../real_tests.h"
 
-int	strcpy_launcher(void)
+int	isdigit_launcher(void)
 {
-	t_unit_test	*testlist;
-	char		*name;
+	t_list	*testlist;
+	char	*name;
 
-	name = "strcpy";
-	load_test(name, &testlist, "Basic strcpy test", &basic_strcpy_test);
-	load_test(name, &testlist, "Wrong result test", &wrong_result_test);
-	load_test(name, &testlist, "NULL src test", &null_src_test);
-	load_test(name, &testlist, "Bus error test", &strcpy_bus_error_test);
+	testlist = NULL;
+	name = "ISDIGIT";
+	load_test(name, &testlist, "Basic isdigit test", &basic_isdigit_test);
+	load_test(name, &testlist, "Wrong result test", &isdigit_wrong_test);
+	load_test(name, &testlist, "Limit test", &isdigit_limit_test);
 	return (launch_tests(&testlist));
 }
