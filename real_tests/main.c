@@ -1,21 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sadell-e <sadell-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/18 14:52:07 by miricci           #+#    #+#             */
-/*   Updated: 2026/05/24 15:04:36 by sadell-e         ###   ########.fr       */
+/*   Created: 2026/05/23 12:45:22 by sadell-e          #+#    #+#             */
+/*   Updated: 2026/05/24 16:53:11 by sadell-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "real_tests.h"
 
-int	ft_isalnum(int c)
+int	main(void)
 {
-	if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122) || (c >= 48 && c <= 57))
-		return (1);
-	else
-		return (0);
-}
+	int	result;
 
+	result = 0;
+	result += isalnum_launcher();
+	result += isalpha_launcher();
+	result += isascii_launcher();
+	result += isdigit_launcher();
+	result += isprint_launcher();
+	result += tolower_launcher();
+	result += toupper_launcher();
+	if (result != 0)
+		return (-1);
+	return (0);
+}

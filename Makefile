@@ -14,6 +14,9 @@ BONUS_DIR = framework_bonus
 TEST_BONUS_DIR = bonus_tests
 
 AR = ar rcs
+CFLAGS = -Wall -Wextra -Werror
+SRC = framework/launch_tests.c \
+framework/loadtest.c \
 
 SRC	= 	$(SRC_DIR)/launch_tests.c \
 		$(SRC_DIR)/loadtest.c
@@ -36,6 +39,21 @@ bonus: $(BONUS)
 
 $(BONUS): $(BONUS_OBJS)
 	@$(AR) $@ $^
+
+test-bonus:
+	@$(MAKE) test -C $(TEST_BONUS_DIR) --no-print-directory
+
+$(NAME): $(OBJS)
+	@$(AR) $@ $^
+
+$(OBJ_DIR):
+	@mkdir -p $@
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	@mkdir -p $(dir $@)
+	@$(CC) $(CFLAGS) -I$(INC_DIR) -I$(LIBFT_DIR) -c $< -o $@
+
+$(OBJ_DIR)/%.o: $(BONUS_DIR)/%.c
 
 test-bonus:
 	@$(MAKE) test -C $(TEST_BONUS_DIR) --no-print-directory
