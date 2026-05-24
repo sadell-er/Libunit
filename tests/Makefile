@@ -20,8 +20,8 @@ STRLEN_FILES =	strlen/00_launcher.c	\
 
 DEPENDENCIES =	-L$(ROOT_DIR) -lunit \
 				-L$(INC_DIR)/libft -lft \
-				-L$(INC_DIR)/libft/libsimplelist -lsimplelist
-
+				-L$(INC_DIR)/libft/libsimplelist -lsimplelist \
+				-L$(INC_DIR)/libft/ft_printf -lftprintf
 AR = ar rcs
 
 SRC	= 	main.c			\

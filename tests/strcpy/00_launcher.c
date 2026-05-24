@@ -6,7 +6,7 @@
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 17:11:47 by sadell-e          #+#    #+#             */
-/*   Updated: 2026/05/24 10:18:54 by miricci          ###   ########.fr       */
+/*   Updated: 2026/05/24 14:30:31 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	strcpy_launcher(void)
 	t_list	*testlist;
 	char		*name;
 
+	testlist = NULL;
 	name = "STRCPY";
 	load_test(name, &testlist, "Basic strcpy test", &basic_strcpy_test);
 	load_test(name, &testlist, "Wrong result test", &wrong_result_test);

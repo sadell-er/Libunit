@@ -6,7 +6,7 @@
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 16:42:42 by miricci           #+#    #+#             */
-/*   Updated: 2026/05/24 13:07:11 by miricci          ###   ########.fr       */
+/*   Updated: 2026/05/24 15:52:14 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,26 @@ static int	launch(t_list **head, t_unit_test *data)
 {
 	pid_t	pid;
 	int		status;
-	int		*(*f)(void);
+	int		(*f)(void);
+	// (void)head;
+	t_list	*node;
+	t_list	*tmp;
 
 	pid = fork();
 	if (pid < 0)
 		return (-1);
 	if (pid == 0)
 	{
-		f = &data->fun;
-		ft_lstclear(head, free);
-		exit(*f());
+		f = data->fun;
+		node = *head;
+		while (node)
+		{
+			tmp = node->next;
+			free(node->content);
+			free(node);
+			node = tmp;
+		}
+		exit(f());
 	}
 	wait(&status);
 	if (WIFEXITED(status))
@@ -74,9 +84,11 @@ int	launch_tests(t_list **head)
 	t_unit_test *data;
 	int			ret;
 	int			exit_code;
+	t_list	*tmp;
 
 	ret = 0;
 	node = *head;
+	print_list(head, "head");
 	while (node)
 	{
 		data = node->content;
@@ -86,6 +98,13 @@ int	launch_tests(t_list **head)
 		print_test(data, exit_code);
 		node = node->next;
 	}
-	ft_lstclear(head, free);
+	node = *head;
+	while (node)
+	{
+		tmp = node->next;
+		free(node->content);
+		free(node);
+		node = tmp;
+	}
 	return (ret);
 }
