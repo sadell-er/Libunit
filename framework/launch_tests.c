@@ -6,7 +6,7 @@
 /*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 16:42:42 by miricci           #+#    #+#             */
-/*   Updated: 2026/05/24 12:39:34 by miricci          ###   ########.fr       */
+/*   Updated: 2026/05/24 13:07:11 by miricci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,21 @@ static void	print_test(t_unit_test *data, int exit_code)
 	ft_putchar_fd('\n', STDOUT_FILENO);
 }
 
-static int	launch(t_unit_test *data)
+static int	launch(t_list **head, t_unit_test *data)
 {
 	pid_t	pid;
 	int		status;
+	int		*(*f)(void);
 
 	pid = fork();
 	if (pid < 0)
 		return (-1);
 	if (pid == 0)
-		exit(data->fun());
+	{
+		f = &data->fun;
+		ft_lstclear(head, free);
+		exit(*f());
+	}
 	wait(&status);
 	if (WIFEXITED(status))
 	{
@@ -75,12 +80,12 @@ int	launch_tests(t_list **head)
 	while (node)
 	{
 		data = node->content;
-		exit_code = launch(data);
+		exit_code = launch(head, data);
 		if (exit_code)
 			ret = -1;
 		print_test(data, exit_code);
 		node = node->next;
 	}
-	// ft_lstiter
+	ft_lstclear(head, free);
 	return (ret);
 }

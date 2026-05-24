@@ -36,7 +36,7 @@ test: $(NAME)
 	@./$(NAME)
 
 memcheck: $(NAME)
-	@valgrind ./$(NAME)
+	@valgrind --track-origins=yes ./$(NAME)
 
 $(NAME): $(OBJS)
 	@$(CC) $(CFLAGS) $^ -o $@ $(DEPENDENCIES)
