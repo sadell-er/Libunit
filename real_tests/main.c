@@ -6,7 +6,7 @@
 /*   By: sadell-e <sadell-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 12:45:22 by sadell-e          #+#    #+#             */
-/*   Updated: 2026/05/24 16:26:02 by sadell-e         ###   ########.fr       */
+/*   Updated: 2026/05/24 16:53:11 by sadell-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,6 @@ int	main(void)
 	result += tolower_launcher();
 	result += toupper_launcher();
 	if (result != 0)
-	{
-		printf("si");
 		return (-1);
-		
-	}
 	return (0);
 }
