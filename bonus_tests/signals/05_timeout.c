@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   05_timeout.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
+/*   By: sadell-e <sadell-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 21:07:49 by miricci           #+#    #+#             */
-/*   Updated: 2026/05/24 21:14:24 by miricci          ###   ########.fr       */
+/*   Updated: 2026/05/24 22:48:03 by sadell-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,5 @@
 int	test_timeout(void)
 {
 	sleep(10);
-	return(0);
+	return (0);
 }

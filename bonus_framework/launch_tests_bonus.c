@@ -3,18 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   launch_tests_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miricci <miricci@student.42firenze.it>     +#+  +:+       +#+        */
+/*   By: sadell-e <sadell-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 16:42:42 by miricci           #+#    #+#             */
-/*   Updated: 2026/05/24 21:09:42 by miricci          ###   ########.fr       */
+/*   Updated: 2026/05/24 22:48:26 by sadell-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libunit.h"
 
-void timeout_handler(int sig) {
+void	timeout_handler(int sig)
+{
 	(void)sig;
-    exit(1);
+	exit(1);
 }
 
 static int	launch_impl(int status)
